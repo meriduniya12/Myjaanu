@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hrishi ❤️ Nandini – Love World</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0b0b0b 0%, #1a1a1a 100%);
+      color: white;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.8em;
+      color: #ff8db2;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff90b3; }
+      to { text-shadow: 0 0 30px #ff4d6d; }
+    }
+
+    .typing {
+      margin: 30px auto;
+      width: 80%;
+      font-size: 1.4em;
+      white-space: pre-wrap;
+      color: #ffd0df;
+      min-height: 100px;
+    }
+
+    .slider {
+      margin-top: 30px;
+    }
+
+    .slider img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ff90b355;
+    }
+
+    .button {
+      margin: 20px 10px;
+      padding: 15px 30px;
+      background: #ff4d6d;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff4d6d88;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+    }
+
+    .message-box {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff90b355;
+      font-size: 1.1em;
+    }
+
+    .hug {
+      font-size: 2.5em;
+      margin-top: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Floating hearts */
+    .mini-heart {
+      position: fixed;
+      color: pink;
+      animation: rise 6s linear infinite;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Our Love World 💖</h1>
+
+  <div class="typing" id="typing"></div>
+
+  <div class="slider">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAy65RNWbjCrVXgNURGw6Q8zTSFgp7K2c1bPnsvobUHj-yU_O3lUqW0zeM&s=10">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLJqH6S67IGXPK7Y3YOfWC1cezuU2L0inDcg&usqp=CAU">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0dGy-ZLdGfhh6DHFDGBXfNc9QCtFOfbRsV1X3in7rrlWDzdyhcx8GTkw&s=10">
+  </div>
+
+  <div>
+    <button class="button" onclick="showMsg('hug')">🤗 Virtual Hug</button>
+    <button class="button" onclick="showMsg('fix')">💌 Let’s Fix Everything</button>
+    <button class="button" onclick="showMsg('forever')">🔒 Forever Yours</button>
+  </div>
+
+  <div class="hug" id="hugBox">🤗 Yeh hug sirf tumhare liye, meri jaan!</div>
+  <div class="message-box" id="fixMsg">Mujhse gussa ho jao, lekin mujhse door mat jao... main sirf tumhara hoon. 💔</div>
+  <div class="message-box" id="foreverMsg">Jab tak saans chalegi... tum meri jaan ban ke rahogi. Vaada ❤️</div>
+
+  <!-- Background Romantic Music -->
+  <audio autoplay loop id="bgMusic">
+    <source src="https://youtube.com/shorts/b9W_5fVVlco?si=5I-9v8L6zf-RWE7M" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Typing message
+    const text = "Is duniya mein sab kuch ho sakta hai...\nLekin tumhare bina tunhare paglu ka kuchh nahi ho sakta...\nTum meri zindagi ho, Meri Jaa  ❤️  I Lobe You ji";
+    let i = 0;
+    function typeText() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeText, 70);
+      }
+    }
+    typeText();
+
+    function showMsg(type) {
+      document.getElementById("hugBox").style.display = "none";
+      document.getElementById("fixMsg").style.display = "none";
+      document.getElementById("foreverMsg").style.display = "none";
+      if (type === 'hug') document.getElementById("hugBox").style.display = "block";
+      if (type === 'fix') document.getElementById("fixMsg").style.display = "block";
+      if (type === 'forever') document.getElementById("foreverMsg").style.display = "block";
+    }
+
+    // Floating mini hearts
+    setInterval(() => {
+      const h = document.createElement("div");
+      h.className = "mini-heart";
+      h.innerText = "💞";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.top = "100vh";
+      h.style.fontSize = (Math.random() * 20 + 10) + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }, 800);
+  </script>
+
+</body>
+</html>
